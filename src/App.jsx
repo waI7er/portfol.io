@@ -16,7 +16,7 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Lovson GOMAA</h1>
+          <h1>Lovson GOMA</h1>
           <p>
             Bienvenue dans mon{" "}
             <button
