@@ -1,0 +1,53 @@
+/* On s'assure que le container ne subit pas de flex parasite du parent */
+.morpion-game {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 40px auto !important;
+}
+
+/* On force la grille à ne pas s'étirer */
+.board {
+  display: inline-flex !important; /* Important: pour que le fond s'adapte au contenu */
+  flex-direction: column !important;
+  gap: 8px !important;
+  padding: 15px !important;
+  background: rgba(198, 156, 255, 0.05) !important;
+  border-radius: 16px !important;
+  width: auto !important; /* Empêche de prendre toute la largeur */
+}
+
+.board-row {
+  display: flex !important;
+  flex-direction: row !important; /* Aligne les cases en ligne */
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+/* La case : on verrouille les dimensions */
+.morpion-game .square {
+  all: unset; /* On reset tous les styles de boutons globaux d'App.css */
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(198, 156, 255, 0.1) !important;
+  border: 2px solid rgba(198, 156, 255, 0.18) !important;
+  border-radius: 12px !important;
+  font-size: 32px !important;
+  font-family: Arial, sans-serif !important;
+  font-weight: bold !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: background 0.2s !important;
+}
+
+.morpion-game .square:hover {
+  background: rgba(198, 156, 255, 0.3) !important;
+}

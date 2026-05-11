@@ -1,0 +1,114 @@
+/* 1. CONFIGURATION DES VARIABLES (:root)
+   On regroupe tout ici pour éviter les conflits. 
+   Les valeurs "Light Mode" par défaut. */
+:root {
+  /* Couleurs principales */
+  --accent: #8f34e8;
+  --accent-bg: rgba(143, 52, 232, 0.1);
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #f9f8fd;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --social-bg: rgba(143, 52, 232, 0.08);
+  --shadow: rgba(0, 0, 0, 0.08) 0 14px 30px -20px;
+
+  /* Typographie */
+  --sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --mono:
+    ui-monospace, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+
+  font-size: 18px;
+}
+
+/* 3. RESPONSIVE BASE
+   Ajuste la taille de police globale sur les petits écrans. */
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+/* 4. RESET & STYLES DE BASE */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--sans);
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  letter-spacing: 0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+/* 5. ÉLÉMENTS DE TEXTE */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(
+    --sans
+  ); /* Ou var(--heading) si vous créez une variable spécifique */
+  color: var(--text-h);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+code {
+  font-family: var(--mono);
+  background: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* 6. FORMULAIRES & MEDIA */
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--accent);
+  color: white;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  border: 1px solid var(--border);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Évite les espaces vides sous les images */
+}

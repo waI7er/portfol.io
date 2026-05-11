@@ -1,0 +1,779 @@
+/* 1. Variables & Base */
+:root {
+  /* Couleurs principales basées sur l'image */
+  --accent: #8f34e8;
+  --accent-bg: rgba(143, 52, 232, 0.15);
+  --bg: #131326; /* Fond bleu très sombre (image) */
+
+  /* Textes */
+  --text: #94a3b8; /* Gris bleuté pour les descriptions */
+  --text-h: #ffffff; /* Blanc pur pour les titres */
+
+  /* Éléments de structure */
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+  /* Variantes de violet pour les cartes et panels */
+  --purple-soft: #1e1e38; /* Couleur de fond des cartes (image) */
+  --purple-border: rgba(143, 52, 232, 0.3);
+
+  /* Autres variables conservées */
+  --code-bg: #1e1e38;
+  --social-bg: rgba(143, 52, 232, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  margin: 0;
+  color: var(--text); /* Définit la couleur par défaut pour tout le texte */
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* 2. Layout Structure */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 36px;
+}
+
+.section-panel {
+  padding: 48px 32px;
+  /* Utilisation d'un fond légèrement plus clair que le body pour le relief */
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  margin: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Header & Brand */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 32px 0;
+  flex-wrap: wrap;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--accent-bg);
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-h);
+}
+
+.brand-role {
+  color: var(--text);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* 4. Navigation */
+.site-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
+/* 5. Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+  padding: 8px 32px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+  font-weight: 600;
+}
+
+.hero-section h1,
+.section-head h2 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.1;
+  margin: 0 0 24px;
+  color: var(--text-h);
+}
+
+.hero-copy p {
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  max-width: 560px;
+}
+
+.hero-meta div {
+  border: 1px solid var(--purple-border);
+  border-radius: 20px;
+  padding: 16px;
+  background: var(--purple-soft);
+}
+
+.hero-visual img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 28px;
+  object-fit: cover;
+  display: block;
+}
+
+/* 6. Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.button.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-h);
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(143, 52, 232, 0.4);
+}
+
+/* 7. Grids */
+.skills-group-grid,
+.doc-grid,
+.cards-grid,
+.skills-grid,
+.bts-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.skills-group-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+
+  /* 2. Style "Card" (identique à tes projets entreprise) */
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
+  border-radius: 24px;
+  padding: 40px; /* Espace généreux à l'intérieur de la carte */
+  margin-top: 24px;
+
+  /* 3. Effet visuel */
+  transition: all 0.3s ease;
+}
+
+/* Conteneur de l'image pour éviter tout débordement */
+.certif-image-container {
+  width: 100%;
+  height: 180px; /* Ajuste selon tes besoins */
+  border-radius: 12px;
+  overflow: hidden; /* C'est ici qu'on élimine les curseurs résiduels */
+  margin: 15px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.certif-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* L'image remplit le cadre sans se déformer */
+  transition: transform 0.3s ease;
+}
+
+/* Petit effet zoom au survol de la carte */
+.project-card.clickable:hover .certif-preview {
+  transform: scale(1.05);
+}
+
+/* Pour masquer totalement les barres de défilement si tu gardes des iframes (non recommandé) */
+iframe {
+  overflow: hidden;
+}
+iframe::-webkit-scrollbar {
+  display: none;
+}
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes égales */
+  gap: 24px;
+  margin-top: 32px;
+}
+.documentation-section .project-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  background: var(--purple-soft); /* Ton fond de carte habituel */
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+.cards-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.skills-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.bts-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 8. Timeline (Horizontal Scroll corrigé) */
+.timeline-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding: 16px 5px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.timeline-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-card {
+  flex: 0 0 300px;
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
+  border-radius: 24px;
+  padding: 24px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.timeline-card h3 {
+  color: var(--text-h);
+}
+
+.timeline-card.clickable:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+/* 9. Game Morpion */
+.morpion-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.board-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  background: var(--purple-soft);
+  border: 2px solid var(--purple-border);
+  border-radius: 12px;
+  font-size: 32px;
+  color: var(--text-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.square:hover {
+  border-color: var(--accent);
+}
+
+/* 10. Projet Cards (Specific for Image Look) */
+/* --- Bloc Projets Mis à Jour --- */
+
+.project-card {
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+/* --- Styles Communs pour les Cartes Interactives (Projets & Formations) --- */
+
+/* On cible la timeline-card (formation) et la project-card (entreprise) */
+.timeline-card,
+.project-card {
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effets au survol communs */
+.timeline-card.clickable,
+.project-card.clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.timeline-card.clickable:hover,
+.project-card.clickable:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 24px rgba(143, 52, 232, 0.2);
+  background: rgba(143, 52, 232, 0.05);
+}
+
+/* Effet de pression au clic */
+.timeline-card.clickable:active,
+.project-card.clickable:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Harmonisation des titres et liens internes */
+.timeline-card h3,
+.project-card h3 {
+  color: var(--text-h);
+  margin: 0;
+}
+
+.project-link {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Soulignement au survol de la carte */
+.timeline-card.clickable:hover h3,
+.project-card.clickable:hover .project-link {
+  color: var(--accent);
+  /* Optionnel : text-decoration: underline; */
+}
+
+/* Focus pour l'accessibilité clavier */
+.timeline-card.clickable:focus-visible,
+.project-card.clickable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  transform: translateY(-8px);
+}
+/* 11. Responsive */
+@media (max-width: 980px) {
+  .hero-section,
+  .cards-grid,
+  .skills-grid,
+  .skills-group-grid,
+  .doc-grid,
+  .bts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    order: -1;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-panel {
+    padding: 32px 20px;
+  }
+  .button {
+    width: 100%;
+  }
+  .square {
+    width: 65px;
+    height: 65px;
+  }
+  .site-header {
+    padding: 18px 20px 0;
+  }
+  .site-nav {
+    justify-content: flex-start;
+  }
+}
+
+/* 12. Scroll Top Utility */
+.scroll-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+/* Style des flèches de navigation */
+.scroll-arrow {
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.scroll-arrow:hover {
+  transform: scale(1.1);
+  background: #a855f7;
+}
+
+.left-arrow {
+  margin-right: -10px; /* Chevauche un peu pour le style */
+}
+
+.right-arrow {
+  margin-left: -10px;
+}
+
+/* On cache les flèches sur mobile car le scroll tactile suffit */
+@media (max-width: 768px) {
+  .scroll-arrow {
+    display: none;
+  }
+}
+.timeline-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-arrow {
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+}
+
+.scroll-arrow:hover {
+  transform: scale(1.1);
+}
+
+.left-arrow {
+  position: absolute;
+  left: -15px;
+}
+.right-arrow {
+  position: absolute;
+  right: -15px;
+}
+.timeline-grid {
+  display: flex; /* Aligne les cartes horizontalement */
+  overflow-x: auto; /* Active le scroll horizontal */
+  scroll-behavior: smooth; /* Animation fluide lors du clic sur les flèches */
+  gap: 24px; /* Espace entre les cartes */
+  padding: 10px 5px;
+  scrollbar-width: none; /* Cache la barre de scroll sur Firefox */
+  -ms-overflow-style: none; /* Cache la barre de scroll sur IE/Edge */
+}
+
+.timeline-grid::-webkit-scrollbar {
+  display: none; /* Cache la barre de scroll sur Chrome/Safari */
+}
+
+/* Empêche les cartes de rétrécir */
+.timeline-grid .project-card {
+  flex: 0 0 350px; /* Largeur fixe de 350px par carte */
+  min-width: 300px;
+}
+
+@media (max-width: 850px) {
+  .doc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .documentation-section h2 {
+    font-size: 1.8rem; /* Ajustement du titre si trop long */
+  }
+}
+.contact-section {
+  text-align: left;
+}
+
+.contact-desc {
+  color: var(--text);
+  opacity: 0.8;
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+/* Grille de contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Style spécifique aux cartes de contact */
+.contact-card {
+  padding: 32px !important; /* Un peu plus d'espace */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--purple-soft) !important;
+}
+
+.contact-icon {
+  font-weight: bold;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-card h3 {
+  margin-bottom: 8px;
+}
+
+.contact-card p {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Conteneur de droite */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.profile-card {
+  background: var(--purple-soft);
+  border: 1px solid var(--purple-border);
+  padding: 30px; /* Réduit légèrement pour ne pas étouffer le contenu */
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px; /* Espace harmonieux entre l'image et les boutons */
+  width: 400px; /* On pousse un peu la largeur pour l'alignement 3 boutons */
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.profile-img-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px; /* Un peu plus arrondi pour coller au style des cards */
+  overflow: hidden;
+  border: 1px solid var(--purple-border);
+}
+
+.profile-mini-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Le conteneur qui aligne les boutons en ligne */
+.profile-socials-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribue l'espace */
+  gap: 10px; /* Espace entre les boutons */
+  width: 100%;
+}
+
+/* Style des petits boutons alignés */
+.social-btn-mini {
+  flex: 1; /* Force les boutons à avoir la même largeur exacte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 5px; /* Un peu plus de hauteur pour rappeler ton image */
+  border-radius: 12px;
+  font-size: 0.8rem; /* Réduit légèrement pour éviter que le texte ne touche les bords */
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid var(--purple-border);
+  white-space: nowrap;
+}
+
+/* Boutons GitHub et LinkedIn (Style "Me contacter") */
+.social-btn-mini.github,
+.social-btn-mini.linkedin {
+  background: transparent; /* Fond vide comme ton bouton de droite */
+  color: var(--text);
+}
+
+/* Bouton CV (Style "Découvrez mes projets") */
+.social-btn-mini.cv {
+  background: var(--accent); /* Ton violet principal */
+  color: white;
+  border: 1px solid var(--accent);
+}
+
+/* Hover effects */
+.social-btn-mini:hover {
+  transform: translateY(-3px);
+}
+
+.social-btn-mini.github:hover,
+.social-btn-mini.linkedin:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.social-btn-mini.cv:hover {
+  background: var(--accent-h);
+  box-shadow: 0 5px 15px rgba(143, 52, 232, 0.4);
+}
+/* On force le conteneur principal à occuper l'espace restant */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Cela force <main> à remplir tout le vide sous le header */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Maintenant, ton CSS existant sur PointMatch va fonctionner */
+.project-detail-page {
+  flex: 1; /* La section prend toute la place de <main> */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; /* Centrage vertical définitif */
+  align-items: center !important; /* Centrage horizontal définitif */
+  padding: 40px 20px;
+}

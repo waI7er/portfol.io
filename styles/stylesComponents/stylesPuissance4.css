@@ -1,0 +1,56 @@
+.puissance4-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.game-status {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+/* On rétablit le conteneur sombre de ta capture */
+.board {
+  display: flex;
+  flex-direction: column; /* Aligne les lignes verticalement */
+  gap: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+/* Structure pour forcer l'alignement horizontal des jetons */
+.board-row {
+  display: flex;
+  flex-direction: row; /* FORCE l'alignement horizontal */
+  gap: 8px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  background: #ffffff; /* Le blanc de ton ancienne version */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Couleurs des joueurs */
+.cell.red {
+  background: #ff4d4d;
+}
+
+.cell.yellow {
+  background: #ffcc00;
+}
+
+@media (max-width: 640px) {
+  .cell {
+    width: 40px;
+    height: 40px;
+  }
+}

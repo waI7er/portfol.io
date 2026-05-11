@@ -1,0 +1,49 @@
+/* Style du Toggle Switch */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px; /* Espace avant le titre */
+}
+
+.toggle-bg {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05); /* Fond sombre transparent */
+  padding: 6px;
+  border-radius: 50px;
+  border: 1px solid var(--purple-border);
+  width: fit-content;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+/* État actif : Le bouton violet/rouge qui se déplace */
+.toggle-btn.active {
+  background: var(--accent); /* Garde var(--accent) pour rester cohérent */
+  color: white;
+}
+
+/* Optionnel : transition fluide lors du changement de vue */
+.animate-fade {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,76 @@
+.project-detail-page {
+  /* On ignore les contraintes des parents pour le calcul de la hauteur */
+  display: grid !important;
+  place-items: center; /* Centre horizontalement et verticalement en 1 ligne */
+  align-content: center;
+
+  /* On force la hauteur sur l'écran et non sur le parent */
+  min-height: 100vh !important;
+  width: 100% !important;
+
+  /* On s'assure qu'aucun padding du parent ne nous pousse */
+  margin: 0 auto !important;
+  padding: 60px 20px !important;
+  box-sizing: border-box;
+}
+
+/* On s'assure que le contenu ne s'étale pas trop */
+.project-detail-page > * {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Le wrapper qui contient tout ton contenu */
+.center-container {
+  width: 100%;
+  max-width: 800px; /* Largeur max pour ne pas que ce soit trop étiré */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.project-detail-page .section-head {
+  margin-bottom: 32px;
+}
+
+.project-detail-page p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 650px;
+}
+
+.project-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  margin-top: 30px;
+  text-align: left; /* Garde le texte des détails à gauche */
+}
+
+/* ... garde le reste de tes styles pour les boutons et tags ... */
+/* Nouveau conteneur horizontal pour les boutons secondaires */
+.secondary-links-row {
+  display: flex;
+  flex-direction: row; /* Aligne les boutons côte à côte */
+  flex-wrap: wrap; /* Permet de passer à la ligne sur petit écran */
+  justify-content: center;
+  gap: 12px; /* Espace entre les boutons */
+  width: 100%;
+}
+
+/* Optionnel : Ajustement de la taille des boutons secondaires pour qu'ils soient homogènes */
+.secondary-links-row .button {
+  padding: 10px 16px;
+  font-size: 14px;
+  min-width: 140px; /* Donne une largeur minimum pour l'esthétique */
+  justify-content: center;
+}
+
+/* On peut garder le bouton retour un peu plus bas */
+.back-btn {
+  margin-top: 10px;
+  opacity: 0.8;
+}
