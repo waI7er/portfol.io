@@ -2,6 +2,7 @@ import "../../styles/stylesComponents/stylesBiblioBus.css";
 // Vérifie bien que ces fichiers existent ou remplace-les par les bons PDFs de BiblioBus
 import Instruction from "../assets/pdf/Instructions-Bibliobus.pdf";
 import Cahier from "../assets/pdf/Cahier-des-charges-bibliobus.pdf";
+import Bibliobus from "../assets/pdf/Bibliobus.pdf";
 
 export default function BiblioBus({ onBack }) {
   return (
@@ -62,6 +63,14 @@ export default function BiblioBus({ onBack }) {
                   rel="noreferrer"
                 >
                   Cahier des charges
+                </a>
+                <a
+                  href={Bibliobus}
+                  className="button secondary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Organisation
                 </a>
                 <a
                   href="https://github.com/sakagnir/php_bibliobus" // À mettre à jour
