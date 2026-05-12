@@ -1,4 +1,5 @@
 import "../../styles/App.css";
+import Fiche from "../assets/pdf/Fiche de Procédure.pdf";
 
 export default function IfcvParis({ onBack }) {
   return (
@@ -40,6 +41,19 @@ export default function IfcvParis({ onBack }) {
           >
             Voir le projet
           </a>
+          <div className="project-links">
+            <div className="secondary-links-row">
+              <a
+                href={Fiche}
+                className="button secondary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Fiche de Procédure
+              </a>
+            </div>
+          </div>
+
           <button className="button secondary" onClick={onBack}>
             Retour au portfolio
           </button>
