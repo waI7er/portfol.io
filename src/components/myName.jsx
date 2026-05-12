@@ -1,5 +1,5 @@
 import "../../styles/App.css";
-
+import NivoWeb from "../assets/pdf/NivoWeb.pdf";
 export default function MyName({ onBack }) {
   return (
     <section className="section-panel project-detail-page">
@@ -41,6 +41,19 @@ export default function MyName({ onBack }) {
           >
             Voir le projet
           </a>
+          <div className="project-links">
+            <div className="secondary-links-row">
+              <a
+                href={NivoWeb}
+                className="button secondary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Missions
+              </a>
+            </div>
+          </div>
+
           <button className="button secondary" onClick={onBack}>
             Retour au portfolio
           </button>
